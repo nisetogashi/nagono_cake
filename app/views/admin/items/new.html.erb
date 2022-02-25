@@ -1,0 +1,20 @@
+<h3><span class="bg-secondary px-3">商品新規登録</span></h3>
+
+<%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+
+  <table>
+    <thead>
+      <tr><th class="col-md-4">商品画像</th>        <td class="col-md-8"><%= f.attachment_field :image %></td></tr>
+      <tr><th class="col-md-4">商品名</th>          <td class="col-md-8"><%= f.text_field :name, placeholder: "商品名" %></td></tr>
+      <tr><th class="col-md-4">商品説明</th>        <td class="col-md-8"><%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %></td></tr>
+      <tr><th class="col-md-4">ジャンル</th>        <td class="col-md-8"><%= f.collection_select :genre_id,  @genres, :id, :name %></td></tr>
+      <tr><th class="col-md-4">税抜価格</th>        <td class="col-md-8"><%= f.number_field :price, placeholder: "税抜価格" %></td></tr>
+      <tr><th class="col-md-4">販売ステータス</th>  <td class="col-md-8">販売中 <%= f.radio_button :is_active, :true %> 販売停止 <%= f.radio_button :is_active, :false %></td></tr>
+      <tr><th class="col-md-4"><th></th>            <td class="col-md-8"><%= f.submit '新規登録', class: "btn btn-primary" %></td></tr>
+    </thead>
+  </table>
+
+<% end %>
+
+<!--f.collection_select(:データを入れる箱の名前, データの範囲, 渡す値, 表示する値)-->
+<!--f.collection_select(:genre_id, Genre.all , :id , :name)-->

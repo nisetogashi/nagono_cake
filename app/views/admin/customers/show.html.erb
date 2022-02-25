@@ -1,0 +1,28 @@
+<h3>
+    <span class="bg-secondary px-3">
+       <%= @customers.last_name %>
+       <%= @customers.first_name %>さんの会員詳細
+    </span>
+</h3>
+
+<table class="table">
+    <thead class="">
+            <tr><th class="col-md-4">氏名</th>              <td class="col-md-8"><%= @customers.id %></td></tr>
+            <tr><th class="col-md-4">フリガナ</th>          <td class="col-md-8"><%= @customers.last_name %><%= @customers.first_name %></td></tr>
+            <tr><th class="col-md-4">郵便番号</th>          <td class="col-md-8"><%= @customers.postal_code %></td></tr>
+            <tr><th class="col-md-4">住所</th>              <td class="col-md-8"><%= @customers.address %></td></tr>
+            <tr><th class="col-md-4">電話番号</th>          <td class="col-md-8"><%= @customers.telephone_number %></td></tr>
+            <tr><th class="col-md-4">メールアドレス</th>    <td class="col-md-8"><%= @customers.email %></td></tr>
+            <tr>
+              　<th class="col-md-4">会員ステータス</th>
+                                                            <% if @customers.is_active %>
+                                                            <td class="col-md-8"><p class="text-success">有効</p></td>
+                                                            <% else %>
+                                                            <td class="col-md-8">無効</td>
+                                                            <% end %>
+    　　      </tr>
+    </thead>
+</table>
+
+<%= link_to "編集する", edit_admin_customer_path, class: "btn btn-primary" %>
+<%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>

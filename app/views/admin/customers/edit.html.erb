@@ -1,0 +1,25 @@
+<h3>
+    <span class="bg-secondary px-3">
+       <%= @customers.last_name %> 
+       <%= @customers.first_name %>さんの会員情報編集
+    </span>
+</h3>
+
+<table>
+  <thead>
+    <tr><th class="col-md-4">会員ID</th>            <td class="col-md-6"><%=  @customers.id %></td></tr>
+  
+    <%= form_with model: @customers, url: admin_customer_path, local:true do |f| %>
+    <tr><th class="col-md-4">氏名</th>              <td class="col-md-8"><%= f.text_field :last_name, placeholder: "姓"%><%= f.text_field :first_name, placeholder: "名"%></td></tr>
+    <tr><th class="col-md-4">フリガナ</th>          <td class="col-md-8"><%= f.text_field :last_name_kana, placeholder: "セイ"%><%= f.text_field :first_name_kana, placeholder: "メイ" %></td></tr>
+    <tr><th class="col-md-4">郵便番号</th>          <td class="col-md-8"><%= f.text_field :postal_code, placeholder: "1234567"%></td></tr>
+    <tr><th class="col-md-4">住所</th>              <td class="col-md-8"><%= f.text_field :address, placeholder: "住所"%></td></tr>
+    <tr><th class="col-md-4">電話番号</th>          <td class="col-md-8"><%= f.text_field :telephone_number, placeholder: "電話番号"%></td></tr>
+    <tr><th class="col-md-4">メールアドレス</th>    <td class="col-md-8"><%= f.email_field :email, placeholder: "nagano@email.com"%></td></tr>
+    <tr><th class="col-md-4">会員ステータス</th>    <td class="col-md-8"><%= f.radio_button :is_active, true %>有効  <%= f.radio_button :is_active, false %>退会</td></tr>
+    <tr><th class="col-md-4"></th>                  <td class="col-md-8"><%= f.submit '変更を保存' %></td></tr>
+    <% end %>
+    
+  </thead>
+</table>
+  

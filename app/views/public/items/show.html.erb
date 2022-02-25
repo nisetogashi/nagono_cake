@@ -1,0 +1,18 @@
+<table>
+
+  <%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg' %>
+
+  <thead>
+    <tr><th><%= @item.name %></th></tr>
+    <tr><th><%= @item.introduction %></th></tr>
+    <tr><th><%= @item.price %></th></tr>
+  </thead>
+</table>
+
+    <%= form_with model: @cart_item do |f| %>
+      <p><%= f.select :amount, *[1..10], placeholder: "個数選択" %></p>
+      <p><%= f.hidden_field :item_id, value: @item.id %></p>
+      <p><%= f.submit 'カートに入れる' %></p>
+    <% end %>
+
+

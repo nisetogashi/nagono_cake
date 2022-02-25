@@ -1,0 +1,27 @@
+<h2><span class="bg-secondary px-3">ログイン</span></h2>
+
+<h5><span class="bg-secondary px-3">会員の方はこちらからログイン</span></h5>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<table>
+  <thead>
+    <tr class="field"><th class="col-md-4"><%= f.label :"メールアドレス" %></th>       <td class="col-md-8"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td></tr>
+    <tr class="field"><th class="col-md-4"><%= f.label :"パスワード" %></th>           <td class="col-md-8"><%= f.password_field :password, autocomplete: "current-password" %></td></tr>
+    <tr class="field"><th class="col-md-4"></th>                                       <td class="col-md-8"><%= f.submit "ログイン" , class: "btn btn-primary" %></td></tr>
+  </thead>
+</table>
+
+<% end %>
+
+<h5><span class="bg-secondary px-3">会員登録がお済みでない方</span></h5>
+<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください
+
+
+
+
+
+
+
+
+
