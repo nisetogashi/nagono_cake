@@ -22,7 +22,7 @@
                 </td>
                 <td scope="row"><%= customers.email %></td>
                 <td scope="row">
-                    <% if customers.is_active %>
+                    <% if customers.is_active == true %>
                         <p class="text-success">有効</p>
                     <% else %>
                         退会

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get '/complete' => 'orders#complete'
     post 'orders/check' => 'orders#check'
     resources :items
-    resource :customers
+    resource :customers , only:[:show, :edit, :update]
     resources :cart_items
     resources :orders
     resources :addresses

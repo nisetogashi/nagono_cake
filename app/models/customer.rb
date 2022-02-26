@@ -6,4 +6,9 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
+
+  # def active_for_anthentication? # is_activeがfalseならtrueを返すようにしている
+  #   super && (is_active == false) #ログイン時に退会済みのユーザーが同じアカウントログインできないようにする
+  # end
+
 end
