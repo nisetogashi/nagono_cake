@@ -1,0 +1,28 @@
+<h1>注文情報入力</h1>
+
+<%= form_with model: @order, url: orders_check_path ,local:true do |f| %>
+
+<h3>支払い方法</h3>
+    <%= f.radio_button :payment_method, "credit_card" %><%= f.label :payment_method, "クレジットカード" %></br>
+    <%= f.radio_button :payment_method, "transfer" %><%= f.label :payment_method, "銀行振込" %></br>
+
+
+<h3>お届け先</h3>
+　　<%= radio_button_tag :address_type, :"1" %><%= f.label :"ご自身の住所" %></br>  <%# _tagはストロングパラメーターを経由しない場合に使用する%>
+　　<%= @user.address%></br>
+
+　　<%= radio_button_tag :address_type, :"2" %><%= f.label :"登録住所から選択" %></br>
+　　<%= select_tag :address_id, options_from_collection_for_select(@address, :id, :full_address) %></br> <%# options_from_collection_for_selectはヘルパーメソッド 例：選択ボックスを生成 %>
+　　<%# options_from_collection_for_select(要素の配列, value属性の項目, textの項目, 選択された要素=nil)%>
+　　
+
+　　<%= radio_button_tag :address_type, :"3" %><%= f.label :"新しいお届け先" %></br>
+　　<%= f.label :"郵便番号" %><%= f.text_field :postal_code, placeholder:"0000000" %></br>
+　　<%= f.label :"住所" %><%= f.text_field :address, placeholder:"東京都〇〇区" %></br>
+　　<%= f.label :"宛名" %><%= f.text_field :name, placeholder:"山田太郎" %></br>
+
+
+    <%= f.submit "確認画面に進む" %>
+
+<% end %>
+

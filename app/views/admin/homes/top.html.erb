@@ -1,0 +1,28 @@
+<h1>管理者トップページ</h1>
+<h3><span class="bg-secondary px-3">注文履歴一覧</span></h3>
+
+<table class="table">
+    <thead>
+        <th scope="col">購入日時</th>
+        <th scope="col">購入者</th>
+        <th scope="col">注文個数</th>
+    </thead>
+    <tbody>
+        
+        <% @orders.each do |order| %>
+    
+        <td scope="row"><%= order.created_at %></td>
+        <td scope="row"><%= order.cuastomer_id %></td>
+        <td scope="row">
+            <% num = 0 %>
+            <% order.orde_item.each do |items| %>
+            <% num += items.amount %>
+            <% end %>
+            <%= num %>
+        </td>
+        <% end %>
+    </tbody>
+</table>
+
+<%= paginate @orders %>
+

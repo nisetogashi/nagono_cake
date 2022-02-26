@@ -1,0 +1,35 @@
+<h1>ショッピングカート</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% sum = 0 %>
+    <% @cart_items.each do |cart| %>
+    <tr>
+      <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: 'jpeg' %><%= cart.item.name %></td>
+      <td><%= cart.item.price %></td>
+      <td><%= cart.amount %></td>
+      <td><%= cart.item.price * cart.amount %></td>
+      <td><%= link_to "削除する", cart_item_path(cart), method: :delete %></td>
+    </tr>
+    <% sum += cart.item.price * cart.amount %>
+    <% end %>
+  </tbody>
+
+  <thead>
+    <tr><th>合計金額</th></tr>
+    <tr><td><%= sum %></td></tr>
+  </thead>
+</table>
+
+<%= link_to "買い物を続ける", items_path %>
+<%= link_to "情報入力に進む", new_order_path %>
